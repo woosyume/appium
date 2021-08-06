@@ -33,4 +33,23 @@ public class DriverFactory {
         AndroidDriver<AndroidElement> driver = new AndroidDriver<>(new URL(APPIUM_HOST), cap);        
         return driver;
     }
+
+    // This is for the case of using real device. (But I don't have private android device...)
+    public AndroidDriver<AndroidElement> getAndroidDriver(String device) throws MalformedURLException {
+        // Load apk file.
+
+        DesiredCapabilities cap = new DesiredCapabilities();
+        if (device.equals("emulator")) {
+            cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel 2 XL API 30");
+            
+        } else if (device.equals("real")) {
+            cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Real Device"); // TODO Fix the actual device name.
+
+        }
+        cap.setCapability(MobileCapabilityType.APP, APK.getAbsolutePath());
+        
+        cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
+        AndroidDriver<AndroidElement> driver = new AndroidDriver<>(new URL(APPIUM_HOST), cap);        
+        return driver;
+    }
 }
