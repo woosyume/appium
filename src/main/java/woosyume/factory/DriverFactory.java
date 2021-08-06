@@ -21,6 +21,7 @@ public class DriverFactory {
     private static String APPIUM_HOST = "http://0.0.0.0:4723/wd/hub";
     private static File PATH = new File("apk");
     private static File APK = new File(PATH, "ApiDemos-debug.apk");
+    private static File ECOMMERCE_APK = new File(PATH, "General-Store.apk");
 
     public AndroidDriver<AndroidElement> getAndroidDriver() throws MalformedURLException {
         // Load apk file.
@@ -46,7 +47,7 @@ public class DriverFactory {
             cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Real Device"); // TODO Fix the actual device name.
 
         }
-        cap.setCapability(MobileCapabilityType.APP, APK.getAbsolutePath());
+        cap.setCapability(MobileCapabilityType.APP, ECOMMERCE_APK.getAbsolutePath());
         
         cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
         AndroidDriver<AndroidElement> driver = new AndroidDriver<>(new URL(APPIUM_HOST), cap);        
