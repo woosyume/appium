@@ -1,4 +1,4 @@
-package woosyume.factory.excercise;
+package woosyume.excercise;
 
 import java.net.MalformedURLException;
 import java.time.Duration;

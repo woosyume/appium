@@ -1,4 +1,4 @@
-package woosyume.factory.excercise;
+package woosyume.excercise;
 
 import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
@@ -8,7 +8,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import woosyume.factory.DriverFactory;
 
-public class Scrolling {
+public class UIAutomatorTest {
     private static AndroidDriver<AndroidElement> androidDriver = null;
 
     public static void main(String[] args) throws MalformedURLException {
@@ -16,6 +16,10 @@ public class Scrolling {
         androidDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         androidDriver.findElement(MobileBy.AndroidUIAutomator("text(\"Views\")")).click();
-        androidDriver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"WebView\"));");
+        // androidDriver.findElement(MobileBy.AndroidUIAutomator("text(\"Animation\")")).click();
+        
+        // Validate clickable features for all options
+        System.out.println(androidDriver.findElements(MobileBy.AndroidUIAutomator("clickable(true)")).size());
+        
     }
 }

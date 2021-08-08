@@ -31,6 +31,7 @@ public class DriverFactory {
         cap.setCapability(MobileCapabilityType.APP, APK.getAbsolutePath());
         
         cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
+        cap.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 14);
         AndroidDriver<AndroidElement> driver = new AndroidDriver<>(new URL(APPIUM_HOST), cap);        
         return driver;
     }
