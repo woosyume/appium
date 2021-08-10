@@ -30,6 +30,7 @@ public class ProductPageTestPositive {
 
         androidDriver.findElement(By.id("com.androidsample.generalstore:id/btnLetsShop")).click();
 
+        // After scrolling the point, Appium can see the elements.
         androidDriver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"PG 3\"));");
 
         List<AndroidElement> names = androidDriver.findElements(By.id("com.androidsample.generalstore:id/productName"));
