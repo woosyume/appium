@@ -54,4 +54,14 @@ public class DriverFactory {
         AndroidDriver<AndroidElement> driver = new AndroidDriver<>(new URL(APPIUM_HOST), cap);        
         return driver;
     }
+
+    public AndroidDriver<AndroidElement> getAndroidChromeDriver() throws MalformedURLException {
+        DesiredCapabilities cap = new DesiredCapabilities();
+        cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel 2 XL API 30");
+        cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
+        cap.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
+
+        AndroidDriver<AndroidElement> driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), cap);       
+        return driver;
+    }    
 }
