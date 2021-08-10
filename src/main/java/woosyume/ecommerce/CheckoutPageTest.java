@@ -6,12 +6,15 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.touch.LongPressOptions;
 import io.appium.java_client.touch.TapOptions;
 import io.appium.java_client.touch.offset.ElementOption;
@@ -64,5 +67,30 @@ public class CheckoutPageTest {
         androidDriver.findElement(By.id("android:id/button1")).click();
 
         androidDriver.findElement(By.id("com.androidsample.generalstore:id/btnProceed")).click();
+
+        // Change context for using WebView
+        Thread.sleep(7000);
+        // Set<String> contexts = androidDriver.getContextHandles();
+        // for (String context : contexts) {
+        //     System.out.println(context);
+        // }
+        /**
+         *  NATIVE_APP
+         *  WEBVIEW_com.androidsample.generalstore
+         */
+        
+        System.out.println("current context1=" + androidDriver.getContext());
+        androidDriver.context("WEBVIEW_com.androidsample.generalstore");
+        System.out.println("current context2=" + androidDriver.getContext());
+        androidDriver.findElement(By.xpath("//*[@id=\"tsf\"]/div[1]/div[1]/div[1]/div/div[1]/input")).sendKeys("Hello Google"); // xpath or css selector is required after chrome 75. https://support.saucelabs.com/hc/en-us/articles/360057263354-Invalid-locator-error-on-Android-web-tests-using-Chrome-75-and-higher
+        androidDriver.findElement(By.xpath("//*[@id=\"tsf\"]/div[1]/div[1]/div[1]/div/div[1]/input")).sendKeys(Keys.ENTER);
+
+        // Go back to Native app.
+        androidDriver.pressKey(new KeyEvent(AndroidKey.BACK));
+        androidDriver.context("NATIVE_APP");
+
+        // ref. https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/web/chromedriver.md
+        // appium --allow-insecure chromedriver_autodownload
+        // Automatically download proper chrome driver if you start appium with the above command.
     }
 }
