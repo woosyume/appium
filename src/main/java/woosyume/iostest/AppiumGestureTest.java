@@ -26,5 +26,13 @@ public class AppiumGestureTest {
         driver.executeScript("mobile:scroll", scroll);
         driver.findElement(By.id("Web View")).click();
 
+        // Go back
+        driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"UIKitCatalog\"]")).click();
+
+        // Choose pickup value
+        driver.findElement(By.id("Picker View")).click();
+        driver.findElement(By.id("Red color component value")).sendKeys("80");
+        driver.findElement(By.id("Green color component value")).sendKeys("220");
+        driver.findElement(By.id("Blue color component value")).sendKeys("105");
      }
 }
