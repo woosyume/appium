@@ -34,5 +34,15 @@ public class AppiumGestureTest {
         driver.findElement(By.id("Red color component value")).sendKeys("80");
         driver.findElement(By.id("Green color component value")).sendKeys("220");
         driver.findElement(By.id("Blue color component value")).sendKeys("105");
+
+        // Go back
+        driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"UIKitCatalog\"]")).click();
+
+        driver.findElement(By.id("Sliders")).click();
+        // Value of slider should be in 0..1 range
+        IOSElement slider = driver.findElement(By.xpath("//XCUIElementTypeSlider"));
+        slider.setValue("0");
+        slider.setValue("0.7");
+        slider.setValue("1");
      }
 }
