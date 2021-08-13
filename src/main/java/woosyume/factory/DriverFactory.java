@@ -84,4 +84,18 @@ public class DriverFactory {
         IOSDriver<IOSElement> driver = new IOSDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), cap);
         return driver;
     }
+
+    public IOSDriver<IOSElement> getIOSDriverForLongPress() throws MalformedURLException {
+        DesiredCapabilities cap = new DesiredCapabilities();
+        cap.setCapability(MobileCapabilityType.PLATFORM_VERSION, "14.5");
+        cap.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
+        cap.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 12 Pro");
+        cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.IOS_XCUI_TEST);
+        cap.setCapability(IOSMobileCapabilityType.LAUNCH_TIMEOUT, Duration.ofSeconds(50));
+        cap.setCapability("commandTimeouts", "12000");
+        cap.setCapability(MobileCapabilityType.APP, "/Users/woohyeok.kim/Desktop/study/appium/iosapp/longtap.app");
+        
+        IOSDriver<IOSElement> driver = new IOSDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), cap);
+        return driver;
+    }
 }
